@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Galaxy Z Fold 7 — Tia Lenda Edition</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{
+  background:radial-gradient(circle at 50% 38%,#182b49 0,#080e18 42%,#020306 78%);
+  color:#fff;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  display:flex;align-items:center;justify-content:center;
+}
+button{font:inherit;border:0;cursor:pointer}
+.stage{width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:16px}
+.phone{
+  position:relative;width:min(92vw,390px);height:min(88vh,760px);
+  filter:drop-shadow(0 35px 50px #000c);
+}
+.device{
+  position:absolute;inset:0;border-radius:42px;padding:7px;
+  background:linear-gradient(145deg,#666,#171717 16%,#020202 68%,#404040);
+  box-shadow:inset 0 0 0 2px #777,inset 0 0 0 5px #090909;
+}
+.screen{
+  position:relative;width:100%;height:100%;border-radius:35px;overflow:hidden;
+  background:
+    radial-gradient(circle at 70% 10%,#214875 0,transparent 32%),
+    radial-gradient(circle at 15% 80%,#0b2d55 0,transparent 35%),
+    linear-gradient(145deg,#071321,#02050a 70%);
+}
+.screen:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,#ffffff12,transparent 25%,transparent 75%,#ffffff05);
+}
+.camera{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:13px;height:13px;border-radius:50%;background:#020202;box-shadow:0 0 0 2px #252525;z-index:20}
+.status{height:42px;padding:11px 18px 0;display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:800;position:relative;z-index:5}
+.home{height:calc(100% - 42px);padding:15px 17px 70px;overflow:auto;scrollbar-width:none}
+.home::-webkit-scrollbar{display:none}
+.greeting{
+  border:1px solid #ffffff18;border-radius:28px;padding:22px 20px;margin:5px 0 22px;
+  background:linear-gradient(135deg,#ffffff18,#ffffff06);backdrop-filter:blur(20px);
+  box-shadow:0 18px 35px #0004;
+}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.08em;color:#b8c5d7}
+.greeting h1{font-size:37px;line-height:1.05;margin:8px 0 9px;font-weight:900}
+.greeting p{margin:0;color:#bdc9d8;font-size:13px}
+.crown{font-size:42px;display:inline-block;margin-top:10px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px 9px}
+.app{background:none;color:#fff;display:flex;flex-direction:column;align-items:center;gap:7px}
+.icon{
+ width:58px;height:58px;border-radius:18px;display:grid;place-items:center;font-size:25px;
+ box-shadow:0 10px 22px #0006;border:1px solid #ffffff18;
+}
+.app span{font-size:10px;font-weight:750;color:#f1f4f8}
+.dock{
+ position:absolute;left:10px;right:10px;bottom:9px;height:54px;border-radius:25px;
+ background:#ffffff0b;border:1px solid #ffffff12;backdrop-filter:blur(20px);
+ display:flex;justify-content:space-around;align-items:center;z-index:10;
+}
+.dock button{background:none;color:#fff;font-size:24px;padding:9px;opacity:.9}
+.panel,.app-page{
+ position:absolute;inset:0;z-index:50;display:none;flex-direction:column;
+ background:#07101ded;backdrop-filter:blur(24px);
+}
+.panel.show,.app-page.show{display:flex;animation:in .22s ease-out}
+@keyframes in{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+.head{height:68px;padding:17px 18px;display:flex;align-items:center;gap:14px;border-bottom:1px solid #ffffff12}
+.head b{font-size:18px}.close{margin-left:auto;width:35px;height:35px;border-radius:50%;background:#ffffff14;color:#fff;font-size:22px}
+.content{padding:20px;overflow:auto}
+.row{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:17px 0;border-bottom:1px solid #ffffff12}
+.range{width:52%}
+.card{background:#fff;color:#151922;border-radius:24px;padding:22px;margin-bottom:15px;box-shadow:0 14px 30px #0004}
+.card h2{margin:7px 0 10px}.card p{line-height:1.6;color:#4c5360}
+.back{background:none;color:inherit;font-size:30px}
+.camera-page{background:#000}
+.viewfinder{flex:1;display:grid;place-items:center;font-size:82px;background:radial-gradient(circle,#20344a,#000)}
+.shutter{width:72px;height:72px;border-radius:50%;background:#fff;border:6px solid #777;margin:16px auto 24px}
+.toast{
+ position:absolute;left:16px;right:16px;top:48px;z-index:100;padding:13px 15px;border-radius:16px;
+ background:#111923ee;border:1px solid #ffffff16;backdrop-filter:blur(15px);display:none;font-size:12px;
+}
+.powered .screen{background:#000}.powered .screen>*{opacity:0;pointer-events:none}
+.cover-info{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px}
+.cover-time{font-size:64px;font-weight:200;letter-spacing:-2px}
+.cover-date{color:#c8d3e1;font-size:13px;margin:7px 0 34px}
+.cover-title{font-size:29px;font-weight:900}.edition{color:#d4af37;font-weight:900;margin-top:6px}
+.open-btn{margin-top:27px;border-radius:999px;padding:14px 22px;background:#fff;color:#111;font-weight:900}
+.power-button{
+ position:absolute;right:-3px;top:31%;width:7px;height:70px;border-radius:5px;
+ background:linear-gradient(#777,#202020);box-shadow:2px 3px 5px #000;z-index:30
+}
+.volume{position:absolute;left:-3px;top:25%;width:7px;height:110px;border-radius:5px;background:linear-gradient(#777,#202020);z-index:30}
+.volume:after{content:"";position:absolute;top:50%;left:0;width:7px;height:5px;background:#111}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="phone" id="phone">
+    <div class="device">
+      <div class="screen" id="screen">
+        <div class="camera"></div>
+        <div class="status"><span id="time">20:35</span><span>● 5G&nbsp;&nbsp; Wi‑Fi&nbsp;&nbsp; 🔋 <b id="bat">100</b>%</span></div>
+        <main class="home">
+          <section class="greeting">
+            <div class="eyebrow">EDIÇÃO ESPECIAL</div>
+            <h1>Olá, Lenda!</h1>
+            <p id="date">terça-feira, 1 de setembro</p>
+            <div class="crown">👑</div>
+          </section>
+          <section class="grid">
+            <button class="app" onclick="app('love')"><i class="icon" style="background:#ff3974">❤️</i><span>Amor</span></button>
+            <button class="app" onclick="app('marketing')"><i class="icon" style="background:#1478ff">📈</i><span>Marketing</span></button>
+            <button class="app" onclick="app('cr7')"><i class="icon" style="background:#fff;color:#111">🐐</i><span>CR7 Mode</span></button>
+            <button class="app" onclick="app('samsung')"><i class="icon" style="background:#073b91">💎</i><span>Samsung</span></button>
+            <button class="app" onclick="app('camera')"><i class="icon" style="background:#30343b">📷</i><span>Câmara</span></button>
+            <button class="app" onclick="app('music')"><i class="icon" style="background:#743dff">🎵</i><span>Música</span></button>
+            <button class="app" onclick="app('joke')"><i class="icon" style="background:#ffd60a;color:#111">😂</i><span>Brincadeira</span></button>
+            <button class="app" onclick="app('wish')"><i class="icon" style="background:#d4af37">✨</i><span>Desejos</span></button>
+          </section>
+        </main>
+        <nav class="dock">
+          <button onclick="toast('Início')">⌂</button>
+          <button onclick="panel('quick')">☷</button>
+          <button onclick="panel('settings')">⚙</button>
+        </nav>
+        <div class="toast" id="toast"></div>
+
+        <section class="panel" id="quick">
+          <div class="head"><b>Controlos rápidos</b><button class="close" onclick="closeAll()">×</button></div>
+          <div class="content">
+            <div class="row"><span>🔊 Volume</span><input class="range" type="range" min="0" max="100" value="70" oninput="toast('Volume: '+this.value+'%')"></div>
+            <div class="row"><span>☀️ Brilho</span><input class="range" type="range" min="25" max="100" value="100" oninput="brightness(this.value)"></div>
+            <div class="row"><span>🌙 Modo escuro</span><button class="open-btn" style="margin:0;padding:9px 14px" onclick="toast('Modo escuro ativo')">Ativo</button></div>
+          </div>
+        </section>
+
+        <section class="panel" id="settings">
+          <div class="head"><b>Definições</b><button class="close" onclick="closeAll()">×</button></div>
+          <div class="content">
+            <div class="row"><span>📱 Dispositivo</span><b>Tia Lenda</b></div>
+            <div class="row"><span>🔋 Bateria</span><b id="bat2">100%</b></div>
+            <div class="row"><span>📳 Feedback</span><b>Ativo</b></div>
+            <button class="open-btn" style="margin-top:24px" onclick="power()">⏻ Desligar</button>
+          </div>
+        </section>
+
+        <section class="app-page" id="app-love">
+          <div class="head"><button class="back" onclick="closeAll()">‹</button><b>Amor ❤️</b></div>
+          <div class="content"><div class="card"><div style="font-size:65px">💖</div><h2>Amor Infinito</h2><p>O teu coração é a maior fonte de energia desta família. Obrigado por seres o nosso porto seguro e a nossa maior inspiração.</p><b>Estado: Amor Incondicional.</b></div></div>
+        </section>
+        <section class="app-page" id="app-marketing">
+          <div class="head"><button class="back" onclick="closeAll()">‹</button><b>Marketing 📈</b></div>
+          <div class="content"><div class="card"><div style="font-size:65px">🚀</div><h2>Mestra do Mercado</h2><p>Tu não fazes apenas marketing, tu crias impérios! A tua visão na Samsung é o que mantém tudo a brilhar.</p><b>Status: Nível CEO Global.</b></div></div>
+        </section>
+        <section class="app-page" id="app-cr7">
+          <div class="head"><button class="back" onclick="closeAll()">‹</button><b>CR7 Mode 🐐</b></div>
+          <div class="content"><div class="card"><div style="font-size:65px">🐐</div><h2>Modo G.O.A.T.</h2><p>42 anos. A mesma idade do CR7, mas com muito mais estilo, carisma e inteligência.</p><b>Veredito: A verdadeira lenda do jogo!</b></div></div>
+        </section>
+        <section class="app-page" id="app-samsung">
+          <div class="head"><button class="back" onclick="closeAll()">‹</button><b>SAMSUNG 💎</b></div>
+          <div class="content"><div class="card"><div style="font-size:65px">💎</div><h2>SAMSUNG ULTRA</h2><p>Se a Samsung tivesse que escolher a melhor mente do marketing, o cargo já estaria reservado para ti.</p><b>Status: Diamond Edition.</b></div></div>
+        </section>
+        <section class="app-page camera-page" id="app-camera">
+          <div class="head"><button class="back" onclick="closeAll()">‹</button><b>Câmara</b></div>
+          <div class="viewfinder">📷</div><button class="shutter" onclick="toast('📸 Foto capturada!')"></button>
+        </section>
+        <section class="app-page" id="app-music">
+          <div class="head"><button class="back" onclick="closeAll()">‹</button><b>Música 🎵</b></div>
+          <div class="content"><div class="card" style="text-align:center"><div style="font-size:85px">🎶</div><h2>Tia Lenda Mix</h2><p>Uma banda sonora para uma verdadeira lenda.</p><button class="open-btn" onclick="toast('▶ Música a tocar')">▶ Reproduzir</button></div></div>
+        </section>
+        <section class="app-page" id="app-joke">
+          <div class="head"><button class="back" onclick="closeAll()">‹</button><b>Brincadeira 😂</b></div>
+          <div class="content"><div class="card"><div style="font-size:65px">🤪</div><h2>Atenção!</h2><p>Risco elevado de risadas excessivas e ataques de carinho!</p><b>A Tia é demasiado fixe para este ecrã.</b></div></div>
+        </section>
+        <section class="app-page" id="app-wish">
+          <div class="head"><button class="back" onclick="closeAll()">‹</button><b>Desejos ✨</b></div>
+          <div class="content"><div class="card"><div style="font-size:65px">🌟</div><h2>Os Teus Desejos</h2><p>Que este novo ano seja repleto de sucessos, saúde e muitas alegrias.</p><b>Gosto imenso de ti! Parabéns! ❤️</b></div></div>
+        </section>
+      </div>
+      <div class="volume"></div><div class="power-button" onclick="power()"></div>
+    </div>
+  </div>
+</div>
+<script>
+let powered=true;
+function $(id){return document.getElementById(id)}
+function tick(){
+ const d=new Date();
+ $('time').textContent=d.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'});
+ $('date').textContent=d.toLocaleDateString('pt-PT',{weekday:'long',day:'numeric',month:'long'});
+}
+setInterval(tick,1000);tick();
+function toast(t){const x=$('toast');x.textContent=t;x.style.display='block';clearTimeout(window._t);window._t=setTimeout(()=>x.style.display='none',2200)}
+function panel(id){closeAll();$(id).classList.add('show')}
+function app(id){closeAll();$('app-'+id).classList.add('show')}
+function closeAll(){document.querySelectorAll('.panel,.app-page').forEach(x=>x.classList.remove('show'))}
+function brightness(v){$('screen').style.filter='brightness('+v/100+')';toast('☀️ Brilho: '+v+'%')}
+function power(){powered=!powered;document.getElementById('phone').classList.toggle('powered',!powered);toast(powered?'⚡ Ligado':'⏻ Desligado')}
+</script>
+</body>
+</html>
